@@ -1,0 +1,15 @@
+output:
+  logstash:
+    enabled: true
+    hosts:
+      - logstash:5044
+filebeat:
+  prospectors:
+    -
+      paths:
+        - "/var/log/cassandra/system.log*"
+      document_type: cassandra_system_logs
+    -
+      paths:
+        - "/var/log/cassandra/gc.log.*.current"
+      document_type: cassandra_gc_logs
