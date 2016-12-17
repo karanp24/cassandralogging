@@ -11,7 +11,7 @@ RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key
 RUN echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
 RUN apt-get update && apt-get install filebeat && apt-get clean
 RUN sudo update-rc.d filebeat defaults 95 10
-ADD filebeat/filebeat.yml /etc/filebeat/filebeat.yml
+ADD filebeat.yml /etc/filebeat/filebeat.yml
 RUN mkdir /var/lib/filebeat
 RUN chmod 777 /var/lib/filebeat
 RUN echo "/etc/init.d/filebeat start" >> /etc/cassandra/cassandra-env.sh
